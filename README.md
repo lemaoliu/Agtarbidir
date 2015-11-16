@@ -1,2 +1,3 @@
 # Agtarbidir
 This toolkit implements an neural sequence converter, which converts an input sequence to an output sequence.
+The entire code will be available soon once we obtain the permission from our employer NICT...
