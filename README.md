@@ -1,172 +1,93 @@
-Target Bidirectional LSTM for Sequence2Sequence Learning System
---------------------------
 
-This toolkit implements an neural sequence converter, which converts an input sequence to an output sequence.
-It is mainly developed by Lemao Liu @ NICT Japan, following the paper: Agreement on Target-bidirectional LSTMs for Sequence-to-Sequence Learning.
-As we got the permision so late, this current version is tentative and we will
-improve it soon. 
+![Janus logo](https://github.com/lemaoliu/Agtarbidir/issues/1)
 
-####Code Structure
 
-- encdec.py contains the actual models code
-- train.py is a script to train a new model or continue training an existing one
-- sample.py can be used to sample translations from the model (or to find the
-  most probable translations)
-- score.py is used to score sentences pairs, that is to compute log-likelihood
-  of a translation to be generated from a source sentence
-- state.py contains prototype states. In this project a *state* means in fact a
-  full specification of the model and training process, including architectural
-  choices, layer sizes, training data and vocabularies. The prototype states in
-  the state.py files are base configurations from which one can start to train a
-  model of his/her choice.  The *--proto* option of the train.py script can be
-  used to start with a particular prototype.
-- preprocess/*.py are the scripts used to preprocess a parallel corpus to obtain
-  a dataset (see 'Data Preparation' below for more detail.)
-- web-demo/ contains files for running a web-based demonstration of a trained
-  neural machine translation model (see web-demo/README.me for more detail).
+# JANUS - a Joint Agreement Neural transdUction System for sequence2sequence learning
 
-All the paths below are relative to the current directory 
+This toolkit implements an agreement model between left-to-right and right-to-left recurrent neural networks (with LSTM hiddent units), which converts an input sequence to an output sequence.
+It is mainly developed by [Lemao Liu](https://sites.google.com/site/lemaoliu/) @ [NICT](http://www.nict.go.jp/en/univ-com/) Japan, following the paper [1].
+
+Currently, it supports:
+- A single left to right model;
+- A single right to left model;
+- The agreement model between a single left-to-right and a single right-to-left model.
+
+In order to get more powerful performance as shown in our paper, one might need the agreement model between the ensembles of left-to-right and right-to-left models, which will be available soon (on going). 
+
+
+# Dependencies
+- [Python2.7](https://www.python.org/download/releases/2.7/)
+- [Theano](https://github.com/Theano/Theano)
+- [Numpy](http://www.numpy.org/)
+- XML::Simple and XML::Twig Perl Modules -
+  It is only used for a evaluation script in performance. To to install it, one can use cpan. Of course, one shoule install   Perl (with Perl 5.10 verified) at first.
 
 
 
-#### Acknoledgement
-A part of implementations is derived from xxx and xxx, and thanks 
-
-
-
-#### Dependencies for installation
-
-
-
-It needs the following dependencies:
-- theano
-- numpy
-
-
-####Using training script
-
-Simply running
+# Training
 ```
-python nn_combine.py config.ini
+python nn.py config.ini
 ```
-where config.ini is the configure file for training, and for its format please
-see the sample config.ini.
-
-
-it would start training in the current directory. Building a model and compiling
-might take some time, up to 20 minutes for us. When training starts, look for
-the following files:
-
-- search_model.npz contains all the parameters
-- search_state.pkl contains the state
-- search_timing.npz contains useful training statistics
-
-The model is saved every 20 minutes.  If restarted, the training will resume
-from the last saved model. 
-
-The default prototype state used is *prototype_search_state* that corresponds to
-the RNNsearch-50 model from [1].
-
-The *--proto* options allows to choose a different prototype state, for instance
-to train an RNNencdec-30 from [1] run
+In the current directory, a sample of config.ini is available.
+Generally, to obtain the *.xml files as shown in config.ini, please use scripts/wrapper_src_trg.py:
 ```
-train.py --proto=prototype_encdec_state
-```
-To change options from the state use the positional argument *changes*. For
-instance, to train RNNencdec-50 from [1] you can run
-```
-train.py --proto=prototype_encdec_state "prefix='encdec-50_',seqlen=50,sort_k_batches=20"
-```
-For explanations of the state options, see comments in the state.py file. If a
-lot of changes to the prototype state are required (for instance you want to
-train on another dataset), you might want put them in a file, e.g.
-german-data.py, if you want to train the same model to translate to German: 
-```
-dict(
-    source=["parallel-corpus/en-de/parallel.en.shuf.h5"],
-    ...
-    word_indx_trgt="parallel-corpus/en-de/vocab.de.pkl"
-)
-```
-and run
-```
-train.py --proto=a_prototype_state_of_choice --state german-data.py 
+python scripts/wrapper_src_trg.py dev.ja dev.en >dev.ref.ja-en.xml 2>dev.src.ja-en.xml
 ```
 
-####Using sampling script
-The typical call is
+# Testing
+After the training, there will be a file (eval.txt) in the working directory. 
+This file contains four evaluation metrics (ACC, Mean-F-score, MRR and MAP_ref) for three models (left-to-right, right-to-left, and their agreement models) at each iteration, and some lines in this file are as follows:
 ```
-sample.py --beam-search --state your_state.pkl your_model.npz 
+evaluate for 66 iterations
+-------------
+Performance for left-to-right model
+dev
+ACC:          0.270000
+Mean F-score: 0.779298
+MRR:          0.270000
+MAP_ref:      0.270000
+Performance for right-to-left model
+dev
+ACC:          0.460000
+Mean F-score: 0.832969
+MRR:          0.460000
+MAP_ref:      0.460000
+Performance for agreement model
+dev
+ACC:          0.630000
+Mean F-score: 0.912477
+MRR:          0.630000
+MAP_ref:      0.630000
+Performance for left-to-right model
+tst
+ACC:          0.260000
+Mean F-score: 0.767345
+MRR:          0.260000
+MAP_ref:      0.260000
+Performance for right-to-left model
+tst
+ACC:          0.450000
+Mean F-score: 0.811715
+MRR:          0.450000
+MAP_ref:      0.450000
+Performance for agreement model
+tst
+ACC:          0.690000
+Mean F-score: 0.901153
+MRR:          0.690000
+MAP_ref:      0.690000
 ```
-where your_state.pkl and your_model.npz are a state and a model respectively
-produced by the train.py script.  A batch mode is also supported, see the
-sample.py source code.
+Note that to get the real testing performance, one should select the best iteration according the performance on the dev set and then report its corresponding testing performance on the test set.
 
-####Data Preparation
+# About the JANUS and its LOGO
+Both the name and its logo are given by [Andrew Finch](http://www.andrewfinch.com/)
 
-In short, you need the following files:
-- source sentence file in HDF5 format
-- target sentence file in HDF5 format
-- source dictionary in a pickle file (word -> id)
-- target dictionary in a pickle file (word -> id)
-- source inverse dictionary in a pickle file (id -> word)
-- target inverse dictionary in a pickle file (id -> word)
 
-In experiments/nmt/preprocess, we provide scripts that we use to generate these
-data files from a parallel corpus saved in .txt files. 
+# Any bugs or questions
+Please feel free to contact lemaoliu@gmail.com. Your feedbacks are invaluable to make the toolkit powerful. Thanks!
 
-The data preparation scripts assume that the the parallel corpus has been
-correctly tokenized already. In the case of English, for instance, you can
-tokenize the text file using tokenizer.pl from Moses (or the one in web-demo):
-```
-perl tokenizer.perl -l en < bitext.en.txt > bitext.en.tok.txt
-```
+# References
+[1]. Lemao Liu, Andrew Finch, Masao Utiyama, Eiichiro Sumita. [Agreement on Target-bidirectional LSTMs for Sequence-to-Sequence Learning](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxsZW1hb2xpdXxneDo0ZTdmOWJlN2U3ZDAwMDFi). In Proceedings of AAAI, 2016.
 
-```
-python preprocess.py -d vocab.en.pkl -v 30000 -b binarized_text.en.pkl -p *en.txt.gz
-```
-This will create a dictionary (vocab.en.pkl) of 30,000 most frequent words and a
-pickle file (binarized_text.pkl) that contains a list of numpy arrays of which
-each corresponds to each line in the text files. 
-```
-python invert-dict.py vocab.en.pkl ivocab.en.pkl
-```
-This will generate an inverse dictionary (id -> word).
-```
-python convert-pkl2hdf5.py binarized_text.en.pkl binarized_text.en.h5
-```
-This will convert the generated pickle file into an HDF5 format. 
-```
-python shuffle-hdf5.py binarized_text.en.h5 binarized_text.fr.h5 binarized_text.en.shuf.h5 binarized_text.fr.shuf.h5
-```
-Since it can be very expensive to shuffle the dataset each time you train a
-model, we shuffle dataset in advance. However, note that we do keep the original
-files for debugging purpose.
 
-####Tests
-
-Run
-```
-GHOG=/path/to/groundhog test/test.bash
-```
-to test sentence pairs scoring and translation generation. The script will start with creating 
-a workspace directory and download test models there. You can keep using the same test workspace
-and data.
-
-####Known Issues
-
-- float32 is hardcoded in many places, which effectively means that you can only 
-  use the code with floatX=float32 in your .theanorc or THEANO_FLAGS
-- In order to sample from the RNNsearch model you have to set the theano option on_unused_input to 'warn' 
-  value via either .theanorc or THEANO_FLAGS
-
-####References
-
-Dzmitry Bahdanau, Kyunghyun Cho and Yoshua Bengio. 
-Neural Machine Translation by Jointly Learning to Align and Translate
-http://arxiv.org/abs/1409.0473
-
-Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk and Yoshua Bengio.
-Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation.
-EMNLP 2014. http://arxiv.org/abs/1406.1078
 
