@@ -1022,6 +1022,8 @@ def combine(
     #print 'beam_size=%d heap_rerank.size=%d'%(beamsearch.beamsize,len(heap_rerank))
     best_rerank = heapq.nlargest(beamsearch.beamsize, heap_rerank)[0][1]
     best_rerank = beamsearch.to_words(best_rerank, beamsearch.t_index2word)
+
+    '''
     heap = []
     batches = split2batches(cands)
     for bt in batches:
@@ -1029,6 +1031,7 @@ def combine(
         heap.extend(pairs)
 
     kbest = heapq.nlargest(beamsearch.beamsize, heap)
+    '''
     return beamsearch.to_words(kbest[0][1],beamsearch.t_index2word),best_f,best_r,best_rerank
 
 def split2batches(
