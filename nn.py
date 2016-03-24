@@ -626,6 +626,7 @@ def train_lstm(
     lrate=10,  # Learning rate for sgd (not used for adadelta and rmsprop)
     encoder='lstm',  # TODO: can be removed must be lstm.
     saveto='lstm_model',  # The best model will be saved there
+    save_on_the_fly=0,
     validFreq=-1,#370,  # Compute the validation error after this number of update.
     saveFreq=1110,  # Save the parameters after every saveFreq updates
     maxlen=100,  # Sequence longer then this get ignored
@@ -772,6 +773,9 @@ def train_lstm(
 
             model_f_iter=saveto+'_f_iter%i.npz'%eidx
             model_r_iter=saveto+'_r_iter%i.npz'%eidx
+            if model_options['save_on_the_fly']: 
+                rev_enc_dec.save(model_r_iter)
+                enc_dec.save(model_f_iter)
 
             # Get new shuffled index for the training set.
             kf = get_minibatches_idx(len(train[0]), batch_size, shuffle=True)
