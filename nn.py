@@ -11,22 +11,26 @@ import theano
 from theano import config
 import theano.tensor as tensor
 from theano.sandbox.rng_mrg import MRG_RandomStreams as RandomStreams
-from imdb import preprocess_data, prepare_reorderdata_minibatch, \
+from database import preprocess_data, prepare_reorderdata_minibatch, \
                  get_label, load_dict, seq2indices
-from imdb import split_train
-import imdb
+from database import split_train
+import database
 import os
 from theano.ifelse import ifelse
 
 from search import BeamSearch
 
 import theano.sandbox.cuda
+
+import datetime
+
 #theano.sandbox.cuda.use('gpu3')
 
 logger = logging.getLogger(__name__)
-SEED = 123
+#SEED = 123
+now = datetime.datetime.now()
+SEED = now.microsecond # different neural net every run
 numpy.random.seed(SEED)
-
 
 def get_minibatches_idx(n, minibatch_size, shuffle=False):
     """
@@ -623,16 +627,17 @@ def train_lstm(
     dispFreq=10,  # Display to stdout the training progress every N updates
     decay_c=0.,  # Weight decay for the classifier applied to the U weights.
     begin_valid=0,## when begin to evalute the performance on dev and test sets.
+    save_on_the_fly=0,
     lrate=10,  # Learning rate for sgd (not used for adadelta and rmsprop)
     encoder='lstm',  # TODO: can be removed must be lstm.
     saveto='lstm_model',  # The best model will be saved there
-    save_on_the_fly=0,
     validFreq=-1,#370,  # Compute the validation error after this number of update.
     saveFreq=1110,  # Save the parameters after every saveFreq updates
     maxlen=100,  # Sequence longer then this get ignored
     batch_size=3,  # The batch size during training.
     valid_batch_size=64,  # The batch size used for validation/test set.
-    dataset='imdb',
+    dataset='database',
+
     # Parameter for extra option
     noise_std=0.,
     use_dropout=False,#True,  # if False slightly faster, but worst test error
@@ -836,20 +841,12 @@ def train_lstm(
             print 'Seen %d samples, tot_cost %f' % (n_samples,tot_cost)
             if eidx+1 % 5 == 0:
                 sys.stdout.flush()
-            if  dev_file and eidx > begin_valid:
-                if not os.path.isfile(model_f_iter):
-                    print 'no model file=%s, finish decoding'%model_f_iter
-                    continue;
-                print 'evaluating on dev and test set for iter %s'%model_f_iter
-                print_tparams(beamsearch.enc_dec.params)
-                beamsearch.enc_dec.load(model_f_iter)
-                print 'after load model'
-                print_tparams(beamsearch.enc_dec.params)
-                beamsearch_rev.enc_dec.load(model_r_iter)
-                os.system('echo %s >>eval.txt'%model_f_iter)
+            if  os.path.isfile(dev_file) and eidx > begin_valid:
+                os.system('echo evaluate for %d iterations >>eval.txt' % eidx)
+                os.system('echo ------------- >>eval.txt')
                 test_eval_combine(beamsearch,beamsearch_rev,src_file=dev_file,\
                                   trg_file=dev_ref,src_xml=dev_xml,modelfile=model_f_iter)
-                if 1 and tst_file:
+                if os.path.isfile(tst_file):
                     test_eval_combine(beamsearch,beamsearch_rev,src_file=tst_file,\
                               trg_file=tst_ref,src_xml=tst_xml,isdev=False,modelfile=model_f_iter)
             if estop:
@@ -895,11 +892,11 @@ def test_eval_combine(
     modelfile=None,
 ):
 
-    res = 'src.res.comb'
-    res_f = 'src.res.forward'
-    res_r = 'src.res.backward'
-    res_rerank = 'src.res.rerank'
-    ff = open(res,'w')
+    #res = 'src.res.comb'
+    res_f = 'src.res.l2r'
+    res_r = 'src.res.r2l'
+    res_rerank = 'src.res.agm'
+    #ff = open(res,'w')
     ff_f = open(res_f,'w')
     ff_r = open(res_r,'w')
     ff_rerank = open(res_rerank,'w')
@@ -912,32 +909,31 @@ def test_eval_combine(
         best_rerank = split_underbar(best_rerank)
 
         if (i + 1)  % 100 == 0:
-            ff.flush()
             logger.debug("Current speed is {} per sentence".
                     format((time.time() - start_time) / (i + 1)))
         if src_xml is None:
-            print >>ff, best_tran
+            #print >>ff, best_tran
             print >>ff_f, best_f
             print >>ff_r, best_r
             print >>ff_rerank, best_rerank
         else:
-            print >>ff,"%d ||| %s ||| 0.0 "%(i, best_tran)
+            #print >>ff,"%d ||| %s ||| 0.0 "%(i, best_tran)
             print >>ff_f,"%d ||| %s ||| 0.0 "%(i, best_f)
             print >>ff_r,"%d ||| %s ||| 0.0 "%(i, best_r)
             print >>ff_rerank,"%d ||| %s ||| 0.0 "%(i, best_rerank)
 
-    logger.debug("Current speed is {} per sentence calculated on tot {} sentences".
+    logger.debug("Current speed is {} seconds per sentence calculated on tot {} sentences".
          format((time.time() - start_time) / (i + 1),i+1))
 
-    ff.close()
+    #ff.close()
     ff_f.close()
     ff_r.close()
     ff_rerank.close()
 
     dev_or_tst = 'on dev set' if isdev else 'on tst set'
 
-    print 'ACC for forward',dev_or_tst
-    os.system('echo forward result >>eval.txt')
+    print 'Performance for left-to-right model',dev_or_tst
+    os.system('echo Performance for left-to-right model >>eval.txt')
     evaluation(
         res=res_f,
         src_xml=src_xml,
@@ -945,9 +941,8 @@ def test_eval_combine(
         src_file=src_file,
         isdev=isdev,
         )
-
-    print 'ACC for reverse',dev_or_tst
-    os.system('echo backward result >>eval.txt')
+    print 'Performance for right-to-left model',dev_or_tst
+    os.system('echo Performance for right-to-left model >>eval.txt')
     evaluation(
         res=res_r,
         src_xml=src_xml,
@@ -955,7 +950,7 @@ def test_eval_combine(
         src_file=src_file,
         isdev=isdev,
         )
-    os.system('echo k-best approximation result >>eval.txt')
+    os.system('echo Performance for agreement model >>eval.txt')
     evaluation(
         res=res_rerank,
         src_xml=src_xml,
@@ -1022,17 +1017,18 @@ def combine(
     #print 'beam_size=%d heap_rerank.size=%d'%(beamsearch.beamsize,len(heap_rerank))
     best_rerank = heapq.nlargest(beamsearch.beamsize, heap_rerank)[0][1]
     best_rerank = beamsearch.to_words(best_rerank, beamsearch.t_index2word)
-
-    '''
     heap = []
+    ''' remove the polynomial approximation for efficiency.
     batches = split2batches(cands)
     for bt in batches:
         pairs = rescore(s,bt,beamsearch,beamsearch_rev)
         heap.extend(pairs)
 
     kbest = heapq.nlargest(beamsearch.beamsize, heap)
-    '''
     return beamsearch.to_words(kbest[0][1],beamsearch.t_index2word),best_f,best_r,best_rerank
+    '''
+
+    return best_rerank,best_f,best_r,best_rerank
 
 def split2batches(
     cands,
@@ -1172,85 +1168,16 @@ def get_train_opt(file):
         config[k] = eval(type)(v)
         print type, k, v
     assert config["src_file"] is not None, 'reset src_file'
-
-    train_lstm(**config)
-
-
+   # train_lstm(**config)
+    return config
 
 
 if __name__ == '__main__':
 
     logging.basicConfig(level=logging.DEBUG,
         format="%(asctime)s: %(filename)s:%(lineno)s - %(funcName)s: %(levelname)s: %(message)s")
+    os.system('mv eval.txt eval.txt.bak')
 
-    dir = "/panfs/panmt/users/lliu/code/lstm_reorder/h10k-iwslt-data"
-    src = "%s/h10k.zh"%dir
-    trg = "%s/h10k.en"%dir
-    align = "%s/h10k.align"%dir
+    config_ = get_train_opt(sys.argv[1])
+    train_lstm(**config_)
 
-
-    get_train_opt(sys.argv[1])
-
-    sys.exit()
-
-    devdir = '/panfs/panmt/users/lliu/data/iwslt/iwslt2009/task_BETC_CT/dev'
-    dev_src = '%s/IWSLT09.devset1_CSTAR03.zh'%devdir
-    dev_ref = '%s/IWSLT09.devset1_CSTAR03.low.ref'%devdir
-    tst_src = '%s/2004/IWSLT09.devset2_IWSLT04.zh'%devdir
-    tst_ref = '%s/2004/IWSLT09.devset2_IWSLT04.low.ref'%devdir
-    tst_xml=''
-
-    dev_src = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/corpora/test/NEWS10_test_JaEn_1935.txt'
-    dev_xml = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/corpora/test/NEWS10_test_JaEn_1935.xml'
-    dev_ref = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/corpora/test/NEWS10_ref_JaEN_1935.xml'
-
-    src = '/panfs/panmt/users/lliu/data/iwslt/iwslt2009/task_BETC_CT/training-data/IWSLT09_BTEC_CT.clean.zh'
-    trg = '/panfs/panmt/users/lliu/data/iwslt/iwslt2009/task_BETC_CT/training-data/IWSLT09_BTEC_CT.clean.en'
-    align = '/panfs/panmt/users/lliu/data/iwslt/iwslt2009/task_BETC_CT/training-data/hiero-table/model/aligned.grow-diag-final-and'
-
-
-    src = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/phrase_alignment/word_data/train.ja.txt'
-    trg = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/phrase_alignment/word_data/train.en.txt'
-    #trg = '/panfs/panmt/users/lliu/data/transliteration/NEWS2012/corpora/test/NEWS10_ref_JaEN_1935.txt'
-    #trg = dev_ref
-
-    '''
-    src = "%s/h5h.zh"%dir
-    trg = "%s/h5h.en"%dir
-    align = "%s/h5h.align"%dir
-
-    src = "%s/h2.zh"%dir
-    trg = "%s/h2.en"%dir
-    align = "%s/h2.align"%dir
-
-    src = "%s/h60.zh"%dir
-    trg = "%s/h60.en"%dir
-    align = "%s/h60.align"%dir
-
-    src = "%s/h2.zh"%dir
-    trg = "%s/h2.en"%dir
-    align = "%s/h2.align"%dir
-
-    '''
-    train_lstm(
-        max_epochs=1000,
-        dim_proj=500,
-        layers=1,
-        test_size=500,
-        src_file=src,
-        trg_file=trg,
-        align_file=align,
-        patience=100,
-        batch_size=16,  # The batch size during training.
-        dev_file=dev_src,
-        dev_ref=dev_ref,
-        dev_xml=dev_xml,
-        tst_file=tst_src,
-        tst_ref=tst_ref,
-        tst_xml=tst_xml,
-    )
-    '''
-    decoding_check(
-        src_file=src,
-    )
-    '''
