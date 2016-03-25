@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TransliterationCorpus
+  TargetLang = "JP"
+  CorpusSize = "3871"
+  CorpusFormat = "UTF8"
+  SourceLang = "English"
+  CorpusID = "Western_Name_Jp_Transliteration"
+  CorpusType = "">
+<Name id="1">
+<SourceName>アセチレン</SourceName>
+<TargetName ID="1">acetylene</TargetName>
+</Name>
+<Name id="2">
+<SourceName>トラウェ</SourceName>
+<TargetName ID="1">traue</TargetName>
+</Name>
+<Name id="3">
+<SourceName>ペルデュ</SourceName>
+<TargetName ID="1">perdido</TargetName>
+</Name>
+<Name id="4">
+<SourceName>ティシケビッチ</SourceName>
+<TargetName ID="1">tyshkevich</TargetName>
+</Name>
+<Name id="5">
+<SourceName>ジュニー</SourceName>
+<TargetName ID="1">walter</TargetName>
+</Name>
+<Name id="6">
+<SourceName>ゴールボール</SourceName>
+<TargetName ID="1">goalball</TargetName>
+</Name>
+<Name id="7">
+<SourceName>ヒルソン</SourceName>
+<TargetName ID="1">hilson</TargetName>
+</Name>
+<Name id="8">
+<SourceName>フォッソンブローネ</SourceName>
+<TargetName ID="1">fossombrone</TargetName>
+</Name>
+<Name id="9">
+<SourceName>ツベルクリン</SourceName>
+<TargetName ID="1">tuberculin</TargetName>
+</Name>
+<Name id="10">
+<SourceName>トゥリー</SourceName>
+<TargetName ID="1">tree</TargetName>
+</Name>
+<Name id="11">
+<SourceName>アルヴォ</SourceName>
+<TargetName ID="1">arvo</TargetName>
+</Name>
+<Name id="12">
+<SourceName>シアノトキシン</SourceName>
+<TargetName ID="1">cyanotoxin</TargetName>
+</Name>
+<Name id="13">
+<SourceName>ペキニーズ</SourceName>
+<TargetName ID="1">pekingese</TargetName>
+</Name>
+<Name id="14">
+<SourceName>パンテリス</SourceName>
+<TargetName ID="1">pantelis</TargetName>
+</Name>
+<Name id="15">
+<SourceName>モンジャ</SourceName>
+<TargetName ID="1">monja</TargetName>
+</Name>
+<Name id="16">
+<SourceName>マルムース</SourceName>
+<TargetName ID="1">malmuth</TargetName>
+</Name>
+<Name id="17">
+<SourceName>ココレワ</SourceName>
+<TargetName ID="1">kokoreva</TargetName>
+</Name>
+<Name id="18">
+<SourceName>コノート</SourceName>
+<TargetName ID="1">connacht</TargetName>
+</Name>
+<Name id="19">
+<SourceName>ルドルフィヌム</SourceName>
+<TargetName ID="1">rudolfinum</TargetName>
+</Name>
+<Name id="20">
+<SourceName>ヤスベック</SourceName>
+<TargetName ID="1">yasbeck</TargetName>
+</Name>
+<Name id="21">
+<SourceName>リオーニ</SourceName>
+<TargetName ID="1">lioni</TargetName>
+</Name>
+<Name id="22">
+<SourceName>ハラージュ</SourceName>
+<TargetName ID="1">kharaj</TargetName>
+</Name>
+<Name id="23">
+<SourceName>セッサーノ</SourceName>
+<TargetName ID="1">sessano</TargetName>
+</Name>
+<Name id="24">
+<SourceName>トルネオ</SourceName>
+<TargetName ID="1">torneo</TargetName>
+</Name>
+<Name id="25">
+<SourceName>グアジーラ</SourceName>
+<TargetName ID="1">guasila</TargetName>
+</Name>
+<Name id="26">
+<SourceName>イジョフォー</SourceName>
+<TargetName ID="1">ejiofor</TargetName>
+</Name>
+<Name id="27">
+<SourceName>ボイラン</SourceName>
+<TargetName ID="1">boylan</TargetName>
+</Name>
+<Name id="28">
+<SourceName>ディーチュ</SourceName>
+<TargetName ID="1">dietzsch</TargetName>
+</Name>
+<Name id="29">
+<SourceName>フジュロル</SourceName>
+<TargetName ID="1">fougerolles</TargetName>
+</Name>
+<Name id="30">
+<SourceName>オルガン</SourceName>
+<TargetName ID="1">organ</TargetName>
+</Name>
+<Name id="31">
+<SourceName>プトゥシコ</SourceName>
+<TargetName ID="1">ptushko</TargetName>
+</Name>
+<Name id="32">
+<SourceName>ミハイリチェンコ</SourceName>
+<TargetName ID="1">mikhailichenko</TargetName>
+</Name>
+<Name id="33">
+<SourceName>アウトプレースメント</SourceName>
+<TargetName ID="1">outplacement</TargetName>
+</Name>
+<Name id="34">
+<SourceName>アルピ</SourceName>
+<TargetName ID="1">alpi</TargetName>
+</Name>
+<Name id="35">
+<SourceName>クエルマルツ</SourceName>
+<TargetName ID="1">quellmalz</TargetName>
+</Name>
+<Name id="36">
+<SourceName>オールドウィッチ</SourceName>
+<TargetName ID="1">aldwych</TargetName>
+</Name>
+<Name id="37">
+<SourceName>コザン</SourceName>
+<TargetName ID="1">cosan</TargetName>
+</Name>
+<Name id="38">
+<SourceName>ゴルスキー</SourceName>
+<TargetName ID="1">gorski</TargetName>
+</Name>
+<Name id="39">
+<SourceName>ヘイッキネン</SourceName>
+<TargetName ID="1">heikkinen</TargetName>
+</Name>
+<Name id="40">
+<SourceName>アエピカメルス</SourceName>
+<TargetName ID="1">aepycamelus</TargetName>
+</Name>
+<Name id="41">
+<SourceName>ジェンス</SourceName>
+<TargetName ID="1">jens</TargetName>
+</Name>
+<Name id="42">
+<SourceName>ヒアネオ</SourceName>
+<TargetName ID="1">gianneo</TargetName>
+</Name>
+<Name id="43">
+<SourceName>マガロナ</SourceName>
+<TargetName ID="1">magalona</TargetName>
+</Name>
+<Name id="44">
+<SourceName>カンポモローネ</SourceName>
+<TargetName ID="1">campomorone</TargetName>
+</Name>
+<Name id="45">
+<SourceName>カティナ</SourceName>
+<TargetName ID="1">catinat</TargetName>
+</Name>
+<Name id="46">
+<SourceName>トラベレックスジャパン</SourceName>
+<TargetName ID="1">travelex</TargetName>
+</Name>
+<Name id="47">
+<SourceName>シルウァーヌス</SourceName>
+<TargetName ID="1">silvanus</TargetName>
+</Name>
+<Name id="48">
+<SourceName>ハウトマン</SourceName>
+<TargetName ID="1">houtman</TargetName>
+</Name>
+<Name id="49">
+<SourceName>デペッシュ</SourceName>
+<TargetName ID="1">depeche</TargetName>
+</Name>
+<Name id="50">
+<SourceName>ブソガ</SourceName>
+<TargetName ID="1">busoga</TargetName>
+</Name>
+</TransliterationCorpus>

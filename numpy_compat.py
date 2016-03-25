@@ -4,11 +4,7 @@ Compatibility with older numpy's providing argpartition replacement.
 '''
 
 
-'''
-Created on Sep 12, 2014
 
-@author: chorows
-'''
 
 __all__ = ['argpartition']
 
@@ -29,7 +25,7 @@ else:
 Your numpy is old (you have v. %s) and doesn't provide an argpartition function.
 Either upgrade numpy, or install bottleneck (https://pypi.python.org/pypi/Bottleneck).
 
-If you run this from within LISA lab you probably want to run: pip install bottleneck --user
+
 ''' % (numpy.__version__,))
         def argpartition(a, kth, axis=-1, order=None):
             return numpy.argsort(a, axis=axis, order=order)

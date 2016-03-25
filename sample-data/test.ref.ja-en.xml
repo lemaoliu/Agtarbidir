@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TransliterationCorpus
+  TargetLang = "JP"
+  CorpusSize = "3871"
+  CorpusFormat = "UTF8"
+  SourceLang = "English"
+  CorpusID = "Western_Name_Jp_Transliteration"
+  CorpusType = "">
+<Name id="1">
+<SourceName>シクロヘキサノン</SourceName>
+<TargetName ID="1">cyclohexanone</TargetName>
+</Name>
+<Name id="2">
+<SourceName>クツワダ</SourceName>
+<TargetName ID="1">kutsuwada</TargetName>
+</Name>
+<Name id="3">
+<SourceName>マッツァッローネ</SourceName>
+<TargetName ID="1">mazzarrone</TargetName>
+</Name>
+<Name id="4">
+<SourceName>アバドン</SourceName>
+<TargetName ID="1">abaddon</TargetName>
+</Name>
+<Name id="5">
+<SourceName>フランドセン</SourceName>
+<TargetName ID="1">frandsen</TargetName>
+</Name>
+<Name id="6">
+<SourceName>ビウィッチ</SourceName>
+<TargetName ID="1">bewitch</TargetName>
+</Name>
+<Name id="7">
+<SourceName>アテーナー</SourceName>
+<TargetName ID="1">athena</TargetName>
+</Name>
+<Name id="8">
+<SourceName>ボーモン</SourceName>
+<TargetName ID="1">beaumont</TargetName>
+</Name>
+<Name id="9">
+<SourceName>コンツァ</SourceName>
+<TargetName ID="1">conza</TargetName>
+</Name>
+<Name id="10">
+<SourceName>フライホイール</SourceName>
+<TargetName ID="1">flywheel</TargetName>
+</Name>
+<Name id="11">
+<SourceName>セブルス</SourceName>
+<TargetName ID="1">severus</TargetName>
+</Name>
+<Name id="12">
+<SourceName>トリクロロフルオロメタン</SourceName>
+<TargetName ID="1">trichlorofluoromethane</TargetName>
+</Name>
+<Name id="13">
+<SourceName>チャーノフ</SourceName>
+<TargetName ID="1">chernov</TargetName>
+</Name>
+<Name id="14">
+<SourceName>ヴィッラフラーティ</SourceName>
+<TargetName ID="1">villafrati</TargetName>
+</Name>
+<Name id="15">
+<SourceName>パラーデ</SourceName>
+<TargetName ID="1">palade</TargetName>
+</Name>
+<Name id="16">
+<SourceName>フィラティエフ</SourceName>
+<TargetName ID="1">filatyev</TargetName>
+</Name>
+<Name id="17">
+<SourceName>ベッブ</SourceName>
+<TargetName ID="1">bebb</TargetName>
+</Name>
+<Name id="18">
+<SourceName>エルフリーダ</SourceName>
+<TargetName ID="1">elfrida</TargetName>
+</Name>
+<Name id="19">
+<SourceName>フシーレ</SourceName>
+<TargetName ID="1">fucile</TargetName>
+</Name>
+<Name id="20">
+<SourceName>ホノルム</SourceName>
+<TargetName ID="1">honorum</TargetName>
+</Name>
+<Name id="21">
+<SourceName>ウタカ</SourceName>
+<TargetName ID="1">utaka</TargetName>
+</Name>
+<Name id="22">
+<SourceName>ピオリーン</SourceName>
+<TargetName ID="1">pioline</TargetName>
+</Name>
+<Name id="23">
+<SourceName>レジナ</SourceName>
+<TargetName ID="1">regina</TargetName>
+</Name>
+<Name id="24">
+<SourceName>デーヴァ</SourceName>
+<TargetName ID="1">deva</TargetName>
+</Name>
+<Name id="25">
+<SourceName>ブルンナー</SourceName>
+<TargetName ID="1">brunner</TargetName>
+</Name>
+<Name id="26">
+<SourceName>クラーティ</SourceName>
+<TargetName ID="1">crati</TargetName>
+</Name>
+<Name id="27">
+<SourceName>ソスキス</SourceName>
+<TargetName ID="1">soskice</TargetName>
+</Name>
+<Name id="28">
+<SourceName>メカ</SourceName>
+<TargetName ID="1">mecha</TargetName>
+</Name>
+<Name id="29">
+<SourceName>デソワール</SourceName>
+<TargetName ID="1">dessoir</TargetName>
+</Name>
+<Name id="30">
+<SourceName>アウトリュコス</SourceName>
+<TargetName ID="1">autolycus</TargetName>
+</Name>
+<Name id="31">
+<SourceName>エルニエッタ</SourceName>
+<TargetName ID="1">ernietta</TargetName>
+</Name>
+<Name id="32">
+<SourceName>ラカム</SourceName>
+<TargetName ID="1">jack</TargetName>
+</Name>
+<Name id="33">
+<SourceName>ヴェクテン</SourceName>
+<TargetName ID="1">vechten</TargetName>
+</Name>
+<Name id="34">
+<SourceName>スノーフレーク</SourceName>
+<TargetName ID="1">snowflake</TargetName>
+</Name>
+<Name id="35">
+<SourceName>クラブツリー</SourceName>
+<TargetName ID="1">crabtree</TargetName>
+</Name>
+<Name id="36">
+<SourceName>ムニエ</SourceName>
+<TargetName ID="1">mounier</TargetName>
+</Name>
+<Name id="37">
+<SourceName>ポデンツァーノ</SourceName>
+<TargetName ID="1">podenzano</TargetName>
+</Name>
+<Name id="38">
+<SourceName>チュミ</SourceName>
+<TargetName ID="1">tschumi</TargetName>
+</Name>
+<Name id="39">
+<SourceName>タクシーメーター</SourceName>
+<TargetName ID="1">taximeter</TargetName>
+</Name>
+<Name id="40">
+<SourceName>ティフアナ</SourceName>
+<TargetName ID="1">tijuana</TargetName>
+</Name>
+<Name id="41">
+<SourceName>ブランドル</SourceName>
+<TargetName ID="1">brundle</TargetName>
+</Name>
+<Name id="42">
+<SourceName>ファニエル</SourceName>
+<TargetName ID="1">faneuil</TargetName>
+</Name>
+<Name id="43">
+<SourceName>モジブ</SourceName>
+<TargetName ID="1">mojib</TargetName>
+</Name>
+<Name id="44">
+<SourceName>ガヴォーイ</SourceName>
+<TargetName ID="1">gavoi</TargetName>
+</Name>
+<Name id="45">
+<SourceName>プラワー</SourceName>
+<TargetName ID="1">prawer</TargetName>
+</Name>
+<Name id="46">
+<SourceName>ラスチスラフ</SourceName>
+<TargetName ID="1">rastislav</TargetName>
+</Name>
+<Name id="47">
+<SourceName>ハヌッキーヤー</SourceName>
+<TargetName ID="1">menorah</TargetName>
+</Name>
+<Name id="48">
+<SourceName>カイローリ</SourceName>
+<TargetName ID="1">cairoli</TargetName>
+</Name>
+<Name id="49">
+<SourceName>タートルズ</SourceName>
+<TargetName ID="1">turtles</TargetName>
+</Name>
+<Name id="50">
+<SourceName>シャロッテ</SourceName>
+<TargetName ID="1">charlotte</TargetName>
+</Name>
+</TransliterationCorpus>

@@ -5,7 +5,7 @@ import logging
 import numpy
 from theano import config
 
-from imdb import preprocess_data, \
+from database import preprocess_data, \
         seq2indices, prepare_reorderdata_minibatch
 import time
 import sys

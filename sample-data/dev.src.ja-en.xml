@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TransliterationCorpus
+  TargetLang = "JP"
+  CorpusSize = "3871"
+  CorpusFormat = "UTF8"
+  SourceLang = "English"
+  CorpusID = "Western_Name_Jp_Transliteration"
+  CorpusType = "">
+<Name id="1">
+<SourceName>アセチレン</SourceName>
+</Name>
+<Name id="2">
+<SourceName>トラウェ</SourceName>
+</Name>
+<Name id="3">
+<SourceName>ペルデュ</SourceName>
+</Name>
+<Name id="4">
+<SourceName>ティシケビッチ</SourceName>
+</Name>
+<Name id="5">
+<SourceName>ジュニー</SourceName>
+</Name>
+<Name id="6">
+<SourceName>ゴールボール</SourceName>
+</Name>
+<Name id="7">
+<SourceName>ヒルソン</SourceName>
+</Name>
+<Name id="8">
+<SourceName>フォッソンブローネ</SourceName>
+</Name>
+<Name id="9">
+<SourceName>ツベルクリン</SourceName>
+</Name>
+<Name id="10">
+<SourceName>トゥリー</SourceName>
+</Name>
+<Name id="11">
+<SourceName>アルヴォ</SourceName>
+</Name>
+<Name id="12">
+<SourceName>シアノトキシン</SourceName>
+</Name>
+<Name id="13">
+<SourceName>ペキニーズ</SourceName>
+</Name>
+<Name id="14">
+<SourceName>パンテリス</SourceName>
+</Name>
+<Name id="15">
+<SourceName>モンジャ</SourceName>
+</Name>
+<Name id="16">
+<SourceName>マルムース</SourceName>
+</Name>
+<Name id="17">
+<SourceName>ココレワ</SourceName>
+</Name>
+<Name id="18">
+<SourceName>コノート</SourceName>
+</Name>
+<Name id="19">
+<SourceName>ルドルフィヌム</SourceName>
+</Name>
+<Name id="20">
+<SourceName>ヤスベック</SourceName>
+</Name>
+<Name id="21">
+<SourceName>リオーニ</SourceName>
+</Name>
+<Name id="22">
+<SourceName>ハラージュ</SourceName>
+</Name>
+<Name id="23">
+<SourceName>セッサーノ</SourceName>
+</Name>
+<Name id="24">
+<SourceName>トルネオ</SourceName>
+</Name>
+<Name id="25">
+<SourceName>グアジーラ</SourceName>
+</Name>
+<Name id="26">
+<SourceName>イジョフォー</SourceName>
+</Name>
+<Name id="27">
+<SourceName>ボイラン</SourceName>
+</Name>
+<Name id="28">
+<SourceName>ディーチュ</SourceName>
+</Name>
+<Name id="29">
+<SourceName>フジュロル</SourceName>
+</Name>
+<Name id="30">
+<SourceName>オルガン</SourceName>
+</Name>
+<Name id="31">
+<SourceName>プトゥシコ</SourceName>
+</Name>
+<Name id="32">
+<SourceName>ミハイリチェンコ</SourceName>
+</Name>
+<Name id="33">
+<SourceName>アウトプレースメント</SourceName>
+</Name>
+<Name id="34">
+<SourceName>アルピ</SourceName>
+</Name>
+<Name id="35">
+<SourceName>クエルマルツ</SourceName>
+</Name>
+<Name id="36">
+<SourceName>オールドウィッチ</SourceName>
+</Name>
+<Name id="37">
+<SourceName>コザン</SourceName>
+</Name>
+<Name id="38">
+<SourceName>ゴルスキー</SourceName>
+</Name>
+<Name id="39">
+<SourceName>ヘイッキネン</SourceName>
+</Name>
+<Name id="40">
+<SourceName>アエピカメルス</SourceName>
+</Name>
+<Name id="41">
+<SourceName>ジェンス</SourceName>
+</Name>
+<Name id="42">
+<SourceName>ヒアネオ</SourceName>
+</Name>
+<Name id="43">
+<SourceName>マガロナ</SourceName>
+</Name>
+<Name id="44">
+<SourceName>カンポモローネ</SourceName>
+</Name>
+<Name id="45">
+<SourceName>カティナ</SourceName>
+</Name>
+<Name id="46">
+<SourceName>トラベレックスジャパン</SourceName>
+</Name>
+<Name id="47">
+<SourceName>シルウァーヌス</SourceName>
+</Name>
+<Name id="48">
+<SourceName>ハウトマン</SourceName>
+</Name>
+<Name id="49">
+<SourceName>デペッシュ</SourceName>
+</Name>
+<Name id="50">
+<SourceName>ブソガ</SourceName>
+</Name>
+</TransliterationCorpus>

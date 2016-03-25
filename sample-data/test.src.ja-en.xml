@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TransliterationCorpus
+  TargetLang = "JP"
+  CorpusSize = "3871"
+  CorpusFormat = "UTF8"
+  SourceLang = "English"
+  CorpusID = "Western_Name_Jp_Transliteration"
+  CorpusType = "">
+<Name id="1">
+<SourceName>シクロヘキサノン</SourceName>
+</Name>
+<Name id="2">
+<SourceName>クツワダ</SourceName>
+</Name>
+<Name id="3">
+<SourceName>マッツァッローネ</SourceName>
+</Name>
+<Name id="4">
+<SourceName>アバドン</SourceName>
+</Name>
+<Name id="5">
+<SourceName>フランドセン</SourceName>
+</Name>
+<Name id="6">
+<SourceName>ビウィッチ</SourceName>
+</Name>
+<Name id="7">
+<SourceName>アテーナー</SourceName>
+</Name>
+<Name id="8">
+<SourceName>ボーモン</SourceName>
+</Name>
+<Name id="9">
+<SourceName>コンツァ</SourceName>
+</Name>
+<Name id="10">
+<SourceName>フライホイール</SourceName>
+</Name>
+<Name id="11">
+<SourceName>セブルス</SourceName>
+</Name>
+<Name id="12">
+<SourceName>トリクロロフルオロメタン</SourceName>
+</Name>
+<Name id="13">
+<SourceName>チャーノフ</SourceName>
+</Name>
+<Name id="14">
+<SourceName>ヴィッラフラーティ</SourceName>
+</Name>
+<Name id="15">
+<SourceName>パラーデ</SourceName>
+</Name>
+<Name id="16">
+<SourceName>フィラティエフ</SourceName>
+</Name>
+<Name id="17">
+<SourceName>ベッブ</SourceName>
+</Name>
+<Name id="18">
+<SourceName>エルフリーダ</SourceName>
+</Name>
+<Name id="19">
+<SourceName>フシーレ</SourceName>
+</Name>
+<Name id="20">
+<SourceName>ホノルム</SourceName>
+</Name>
+<Name id="21">
+<SourceName>ウタカ</SourceName>
+</Name>
+<Name id="22">
+<SourceName>ピオリーン</SourceName>
+</Name>
+<Name id="23">
+<SourceName>レジナ</SourceName>
+</Name>
+<Name id="24">
+<SourceName>デーヴァ</SourceName>
+</Name>
+<Name id="25">
+<SourceName>ブルンナー</SourceName>
+</Name>
+<Name id="26">
+<SourceName>クラーティ</SourceName>
+</Name>
+<Name id="27">
+<SourceName>ソスキス</SourceName>
+</Name>
+<Name id="28">
+<SourceName>メカ</SourceName>
+</Name>
+<Name id="29">
+<SourceName>デソワール</SourceName>
+</Name>
+<Name id="30">
+<SourceName>アウトリュコス</SourceName>
+</Name>
+<Name id="31">
+<SourceName>エルニエッタ</SourceName>
+</Name>
+<Name id="32">
+<SourceName>ラカム</SourceName>
+</Name>
+<Name id="33">
+<SourceName>ヴェクテン</SourceName>
+</Name>
+<Name id="34">
+<SourceName>スノーフレーク</SourceName>
+</Name>
+<Name id="35">
+<SourceName>クラブツリー</SourceName>
+</Name>
+<Name id="36">
+<SourceName>ムニエ</SourceName>
+</Name>
+<Name id="37">
+<SourceName>ポデンツァーノ</SourceName>
+</Name>
+<Name id="38">
+<SourceName>チュミ</SourceName>
+</Name>
+<Name id="39">
+<SourceName>タクシーメーター</SourceName>
+</Name>
+<Name id="40">
+<SourceName>ティフアナ</SourceName>
+</Name>
+<Name id="41">
+<SourceName>ブランドル</SourceName>
+</Name>
+<Name id="42">
+<SourceName>ファニエル</SourceName>
+</Name>
+<Name id="43">
+<SourceName>モジブ</SourceName>
+</Name>
+<Name id="44">
+<SourceName>ガヴォーイ</SourceName>
+</Name>
+<Name id="45">
+<SourceName>プラワー</SourceName>
+</Name>
+<Name id="46">
+<SourceName>ラスチスラフ</SourceName>
+</Name>
+<Name id="47">
+<SourceName>ハヌッキーヤー</SourceName>
+</Name>
+<Name id="48">
+<SourceName>カイローリ</SourceName>
+</Name>
+<Name id="49">
+<SourceName>タートルズ</SourceName>
+</Name>
+<Name id="50">
+<SourceName>シャロッテ</SourceName>
+</Name>
+</TransliterationCorpus>
