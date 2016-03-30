@@ -270,7 +270,18 @@ class BeamSearch(object):
                 return self._search(seq_origin, n_samples * 2, False, minlen)
             else:
                 logger.warning("Translation failed: cannot end with EOS")
-                return [[]],[0.0],"NO TRANS"
+                if training:
+                    return [[]],[0.0],"NO TRANS"
+                else: ## testing output the partial translation and add eos to the end heuristically
+                    logger.warning("Translation failed: cannot end with EOS, but output the trans in the beam")
+                    for x in trans:
+                        x.append(self.eos_id)
+                    fin_trans = numpy.array(trans)[numpy.argsort(costs)][:self.beamsize]
+                    fin_costs = numpy.array(sorted(costs)[:self.beamsize])
+                    best_trans = fin_trans[0][:-1]
+                    if self.enc_dec.reverse_trg: best_trans = best_trans[::-1]
+                    best_trans = self.to_words(best_trans,self.t_index2word)
+                    return  list(fin_trans), fin_costs, best_trans 
         fin_trans = numpy.array(fin_trans)[numpy.argsort(fin_costs)]
         fin_costs = numpy.array(sorted(fin_costs))
         #'''
