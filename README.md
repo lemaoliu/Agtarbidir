@@ -87,7 +87,7 @@ Both the name and its logo are given by [Andrew Finch](http://www.andrewfinch.co
 Please feel free to contact lemaoliu@gmail.com. Your feedbacks are invaluable to make the toolkit powerful. Thanks!
 
 # Acknowledgement
-Thanks to the tutorial on LSTM implementation at http://deeplearning.net/tutorial/lstm.html
+Thanks to the tutorial at http://deeplearning.net/tutorial/lstm.html, where we follow the implementaion.
 
 # References
 [1]. Lemao Liu, Andrew Finch, Masao Utiyama, Eiichiro Sumita. [Agreement on Target-bidirectional LSTMs for Sequence-to-Sequence Learning](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxsZW1hb2xpdXxneDo0ZTdmOWJlN2U3ZDAwMDFi). In Proceedings of AAAI, 2016.
