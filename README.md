@@ -1,5 +1,5 @@
 
-![Janus logo](https://cloud.githubusercontent.com/assets/9007148/12938904/e25b103a-cffc-11e5-8a29-709a88c9550e.png)
+![Janus logo](<img width="150" height="150" src="https://cloud.githubusercontent.com/assets/9007148/12938904/e25b103a-cffc-11e5-8a29-709a88c9550e.png"/>)
 
 
 # JANUS - a Joint Agreement Neural transdUction System for sequence2sequence learning
